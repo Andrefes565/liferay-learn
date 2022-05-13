@@ -15,8 +15,8 @@ import org.osgi.service.component.annotations.ServiceScope;
  * @author Jonah the son of Amittai
  */
 @Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/foo.properties",
-	scope = ServiceScope.PROTOTYPE, service = FooResource.class
+		properties = "OSGI-INF/liferay/rest/v1_0/foo.properties",
+		scope = ServiceScope.PROTOTYPE, service = FooResource.class
 )
 public class FooResourceImpl extends BaseFooResourceImpl {
 
@@ -54,7 +54,7 @@ public class FooResourceImpl extends BaseFooResourceImpl {
 	public Foo postFoo(Foo foo) {
 		if (_foos.containsKey(foo.getId())) {
 			throw new IllegalArgumentException(
-				"Duplicate foo ID " + foo.getId());
+					"Duplicate foo ID " + foo.getId());
 		}
 
 		_foos.put(foo.getId(), foo);
@@ -84,7 +84,7 @@ public class FooResourceImpl extends BaseFooResourceImpl {
 			Foo foo2 = new Foo() {
 				{
 					description =
-						"Beauty is guided by a transcendental aesthetic.";
+							"Beauty is guided by a transcendental aesthetic.";
 					id = 2L;
 					name = "Beauty";
 				}
@@ -95,8 +95,8 @@ public class FooResourceImpl extends BaseFooResourceImpl {
 			Foo foo3 = new Foo() {
 				{
 					description =
-						"Goodness is defined transcendentally from outside " +
-							"humanity.";
+							"Goodness is defined transcendentally from outside " +
+									"humanity.";
 					id = 3L;
 					name = "Goodness";
 				}

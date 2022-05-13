@@ -18,8 +18,8 @@ import org.osgi.service.component.annotations.ServiceScope;
  * @author Jonah the son of Amittai
  */
 @Component(
-	properties = "OSGI-INF/liferay/rest/v1_0/goo.properties",
-	scope = ServiceScope.PROTOTYPE, service = GooResource.class
+		properties = "OSGI-INF/liferay/rest/v1_0/goo.properties",
+		scope = ServiceScope.PROTOTYPE, service = GooResource.class
 )
 public class GooResourceImpl extends BaseGooResourceImpl {
 
@@ -65,7 +65,7 @@ public class GooResourceImpl extends BaseGooResourceImpl {
 	public Goo postFooGoo(Long fooId, Goo goo) {
 		if (_goos.containsKey(goo.getId())) {
 			throw new IllegalArgumentException(
-				"Duplicate goo ID " + goo.getId());
+					"Duplicate goo ID " + goo.getId());
 		}
 
 		goo.setFooId(fooId);
