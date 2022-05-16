@@ -10,11 +10,26 @@ public class Test {
 			"test@liferay.com", "test"
 		).build();
 
+		//post
 		Foo foo = fooResource.getFoo(1L);
-		Foo foo1 = new Foo("Desc2", 5, "Andre12345");
-		fooResource.postFoo(5L, foo1);
+		Foo foo3 = new Foo();
+		foo3.setDescription("andre");
+		foo3.setId(5L);
+		foo3.setName("kkfsakfka");
+		fooResource.postFoo(foo3);
 
-		System.out.println(foo);
+		//put
+		foo3.setName("modified");
+		foo3.setDescription("andreModified");
+		fooResource.putFoo(5L, foo3);
+		System.out.println(foo3);
+
+
+		//delete
+		fooResource.deleteFoo(5L);
+		System.out.println(foo3);
+
+
 	}
 
 }
