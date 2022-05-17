@@ -1,9 +1,10 @@
-import com.acme.headless.r3b2.client.dto.v1_0.Foo;
-import com.acme.headless.r3b2.client.resource.v1_0.FooResource;
+import com.liferay.headless.delivery.client.dto.v1_0.KnowledgeBaseFolder;
+import com.liferay.headless.delivery.client.resource.v1_0.KnowledgeBaseFolderResource;
 
-public class Test {
+public class Test{
 
 	public static void main(String[] args) throws Exception {
+		/*
 		FooResource.Builder builder = FooResource.builder();
 
 		FooResource fooResource = builder.authentication(
@@ -28,6 +29,51 @@ public class Test {
 		//delete
 		fooResource.deleteFoo(5L);
 		System.out.println(foo3);
+		 */
+
+		KnowledgeBaseFolderResource.Builder builder = KnowledgeBaseFolderResource.builder();
+		KnowledgeBaseFolderResource knowledgeBaseFolderResource = builder.authentication(
+				"test@liferay.com", "test"
+		).build();
+		KnowledgeBaseFolder knowledgeBaseFolder = new KnowledgeBaseFolder();
+		knowledgeBaseFolder.setName("Andre Felipe");
+
+		long siteId = 20123;
+
+		//POST
+		KnowledgeBaseFolder KBFolderResponse = knowledgeBaseFolderResource.postSiteKnowledgeBaseFolder(siteId, knowledgeBaseFolder);
+		long knowledgeBaseFolderId = KBFolderResponse.getId();
+
+
+		// GET
+		System.out.println(String.format("Folder Base: %s", knowledgeBaseFolderResource.getKnowledgeBaseFolder(knowledgeBaseFolderId)));
+
+		// PATCH
+		KnowledgeBaseFolder knowledgeBaseFolderPatch = knowledgeBaseFolderResource.getKnowledgeBaseFolder(knowledgeBaseFolderId);
+		knowledgeBaseFolderPatch.setName("Andre modified");
+
+		knowledgeBaseFolderResource.patchKnowledgeBaseFolder(knowledgeBaseFolderId, knowledgeBaseFolderPatch);
+
+		//GET
+		System.out.println(String.format("Folder Base: %s", knowledgeBaseFolderResource.getKnowledgeBaseFolder(knowledgeBaseFolderId)));
+
+		//DELETE
+		knowledgeBaseFolderResource.deleteKnowledgeBaseFolder(knowledgeBaseFolderId);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	}
